@@ -9,7 +9,7 @@ from collections import OrderedDict       # ordered dictionary for printing
 #main()
 
 def textPrep(filename):
-    f = open(fileName,'rt', encoding = 'UTF-8')
+    f = open(filename,'rt', encoding = 'UTF-8')
     textString = f.read()
     textList = textString.split()
    
