@@ -16,6 +16,8 @@ def textPrep(filename):
     for i in range(len(textList)):
        textList[i] = textList[i].strip('-,.:;!?()[]"')
        textList[i] = textList[i].lower()
+         
+    return textList     
 
 def wordCount(textList):       
     frequencyDict = {}
@@ -30,3 +32,4 @@ def wordCount(textList):
             frequencyDict[w] = 1
         else:
             frequencyDict[w] += 1
+    return frequencyDict
