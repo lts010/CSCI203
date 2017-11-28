@@ -4,7 +4,7 @@
    Fall 2017
    Student names(s): Logan Stiles and Alex Rabinovich
 """
-from collections import OrderedDict       # ordered dictionary for printing
+import collections       # ordered dictionary for printing
 
 #main()
 
@@ -20,7 +20,7 @@ def textPrep(filename):
     return textList     
 
 def wordCount(textList):       
-    frequencyDict = {}
+    wordCounter = {}
     stopF = open('stopwords.txt')
     stopText = stopF.read()
     stopList = stopText.split()
@@ -28,8 +28,10 @@ def wordCount(textList):
     for w in textList:
         if w in stopList:
             continue
-        if w not in d:
-            frequencyDict[w] = 1
+        if w not in wordCounter:
+            wordCounter[w] = 1
         else:
-            frequencyDict[w] += 1
+            wordCounter[w] += 1
+    sortedDict = collections.OrderedDict(sorted(wordCounter.items(), key=lambda t: t[1]))
+    frequencyDict = dict(sortedDict)
     return frequencyDict
