@@ -61,3 +61,13 @@ def wordCountAnalysis(frequencyDict):
    Inputs: frequencyDict - a dictionary that was produced by the function wordCount
    Outputs: None
    """
+   
+   print('Unique words count:', len(frequencyDict))
+   print('Top 20 frequently used words and their count:')
+   indexNumber = -1
+   uniqueWordsPrinted = 0
+   
+   while uniqueWordsPrinted < 20:
+            uniqueWordsPrinted += 1
+            print(uniqueWordsPrinted + '.', frequencyDict.keys()[indexNumber], frequncyDict.values()[indexNumber])
+            indexNumber -= 1
