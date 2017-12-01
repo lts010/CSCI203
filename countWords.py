@@ -52,3 +52,12 @@ def wordCount(aList):
     sortedDict = collections.OrderedDict(sorted(wordCounter.items(), key=lambda t: t[1])) #convert the dictionary to an ordered dictionary to sort the keys by value
     frequencyDict = dict(sortedDict) #convert the ordered dictionary back into a regular dictionary
     return frequencyDict
+
+def wordCountAnalysis(frequencyDict):
+   """
+   wordCountAnalysis takes in a dictionary produced by the function wordCount, frequencyDict,
+   and prints the amount of unique words in frequencyDict, as well as the top twenty words in
+   frequencyDict. wordCountAnalysis returns nothing.
+   Inputs: frequencyDict - a dictionary that was produced by the function wordCount
+   Outputs: None
+   """
