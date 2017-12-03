@@ -14,6 +14,16 @@ def textPrep(aString):
     case. textPrep then returns the list.
     Input: aString - any string
     Output: textList - a list of words
+
+    >>> stringOne = "John walked to the store."
+    >>> stringTwo = "John! walked?:; to... !?!the store!,."
+    >>> stringThree = "JOHN! WALked?:; To... !?!ThE STORE!,."
+    >>> textPrep(stringOne)
+    ['john', 'walked', 'to', 'the', 'store']
+    >>> textPrep(stringTwo)
+    ['john', 'walked', 'to', 'the', 'store']
+    >>> textPrep(stringThree)
+    ['john', 'walked', 'to', 'the', 'store']
     """
     
     textList = aString.split() #convert the string to a list
@@ -31,6 +41,14 @@ def wordCount(aList):
     the elements of aList and the values are the frequencies of those elements.
     Input: aList - any list
     Output: frequencyDict - a dictionary showing the frequency of the elements in aList
+
+    >>> listOne = ['john', 'walked', 'to', 'the', 'store']
+    >>> wordCount(listOne)
+    {'john': 1, 'walked': 1, 'store': 1}
+    >>> listTwo = ['john', 'john', 'walked', 'to', 'the', 'store', 'walked', 'store']
+    >>> wordCount(listTwo)
+    {'john': 2, 'walked': 2, 'store': 2}
+    >>>
     """
     
     wordCounter = {} #start with an empty dictionary
@@ -80,3 +98,5 @@ def main():
 
 main()
 
+import doctest
+doctest.testmod()
