@@ -13,6 +13,7 @@ def hyphenRemover(aList):
     '''
     
     for i in range(len(aList)):
+        if aList[i] == 'i'
         if '--' in aList[i]:
             hyphenIndex = aList[i].find('--') #find is a string method
             n
