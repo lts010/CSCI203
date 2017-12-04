@@ -125,17 +125,17 @@ def main():
     bushString = f.read() #convert the file into a string
     f.close() #close the file
     print("Running analysis for 'bush_all.txt'")
-    print()
-    wordCountAnalysis(wordCount(textPrep(bushString)))
-    print()
+    print() #print a blank line
+    wordCountAnalysis(wordCount(textPrep(bushString))) #do a full word analysis on all of the Bush speeches
+    print() #print a blank line
 
     f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
     obamaString = f.read() #convert the file into a string
     f.close() #close the file
     print("Running analysis for 'obama_all.txt'")
-    print()
-    wordCountAnalysis(wordCount(textPrep(obamaString)))
-    print()
+    print() #print a blank line
+    wordCountAnalysis(wordCount(textPrep(obamaString))) #do a full word analysis on all of the Obama speeches
+    print() #print a blank line
 
 main()
 
