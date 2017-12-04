@@ -124,23 +124,22 @@ def wordCountAnalysis(frequencyDict):
 
 def wordPlot(frequencyDict, clr, lbl):
     wordsDisplayed = 20
-	dictKeys = list(frequencyDict.keys())
-	dictValues = list(frequencyDict.values())
- 
-	fig, ax = plt.subplots()
-	index = np.arange(wordsDisplayed)
-	bar_width = 0.35
-	
-	bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl)-
- 
-	plt.xlabel('Word')
-	plt.ylabel('Word Use')
-	plt.title('Most Frequently Used in Words in State of the Union Addresses')
-	plt.xticks(index + bar_width, dictKeys[-20:])
+    dictKeys = list(frequencyDict.keys())
+    dictValues = list(frequencyDict.values())
+
+    fig, ax = plt.subplots()
+    index = np.arange(wordsDisplayed)
+    bar_width = 0.35
+    
+    bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl)
+    plt.xlabel('Word')
+    plt.ylabel('Word Use')
+    plt.title('Most Frequently Used in Words in State of the Union Addresses')
+    plt.xticks(index + bar_width, dictKeys[-20:], rotation = 'vertical')
     plt.legend(loc = 'upper right', shadow = True) #create the legend
-			   
-	plt.tight_layout()
-	plt.show()            
+                   
+    plt.tight_layout()
+    plt.show()            
             
 def main():
     f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
@@ -150,7 +149,6 @@ def main():
     print() #print a blank line
     bushDict = wordCount(textPrep(bushString))
     wordCountAnalysis(bushDict) #do a full word analysis on all of the Bush speeches
-	wordPlot(bushDict, 'r-', 'Bush')
     print() #print a blank line
 
     f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
@@ -160,7 +158,9 @@ def main():
     print() #print a blank line
     obamaDict = wordCount(textPrep(obamaString))
     wordCountAnalysis(obamaDict) #do a full word analysis on all of the Obama speeches
-	wordPlot(obamaDict, 'b-', 'Obama')
+    wordPlot(obamaDict, 'blue', 'Obama')
+    wordPlot(bushDict, 'red', 'Bush')
+
     print() #print a blank line
 
 main()
