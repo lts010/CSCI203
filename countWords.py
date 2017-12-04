@@ -7,19 +7,25 @@
 
 import collections       # ordered dictionary for printing
 
-def hyphenRemover(aList):
-    ''' 
-    Remove double hyphens
+def dealWithHyphens(aList):
     '''
-    
-    for i in range(len(aList)):
-        if aList[i] == 'i'
-        if '--' in aList[i]:
-            hyphenIndex = aList[i].find('--') #find is a string method
-            n
+    dealWithHyphens takes in a list aList and removes any double hyphens that connect words,
+    as well as removes any isolated hyphens that exist between words. (e.g. word - word).
+    dealWithHyphens then returns aList
+    Input: aList - any list
+    Output: aList - the same list but without hyphens we don't want
+    '''
+      
+    for i in range(len(aList)): #go through the list by index
+        if aList[i] == '-':
+			aList.remove('-')
+        if '--' in aList[i]: #if there's a double hyphen
+            hyphenIndex = aList[i].find('--') #set hyphenIndex equal to the index of the first part of the double hyphen
+            newWord = aList[i][hyphenIndex + 2:] #make the part of the word after the double hyphen a totally new word 
+            aList += [newWord] # add that new word to the list
+            aList[i] = aList[i][0:hyphenIndex] #redefine aList[i] as the part of the word before the double hyphen
+    return aList
 
-Complete program
-return aList
 
 
 def textPrep(aString):
@@ -43,7 +49,7 @@ def textPrep(aString):
     """
     
     textList = aString.split() #convert the string to a list
-   
+    textList = dealWithHyphens(textList)
     for i in range(len(textList)): #go through every word in the list by index
        textList[i] = textList[i].strip('-,.:;!?()[]"') #remove any unwanted punctuation from the list
        textList[i] = textList[i].lower() #convert all letters to lowercase
