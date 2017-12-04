@@ -14,11 +14,23 @@ def dealWithHyphens(aList):
     dealWithHyphens then returns aList
     Input: aList - any list
     Output: aList - the same list but without hyphens we don't want
+    >>> stringOne = "Right now--right now--American oil production is the highest that it's been in 8 years."
+    >>> stringTwo = "A simple majority is no longer enough to get anything--even routine business--passed through the Senate."
+    >>> stringThree = "these dead shall not have died in vain - that this nation"
+    >>> listOne = stringOne.split()
+    >>> listTwo = stringTwo.split()
+    >>> listThree = stringThree.split()
+    >>> dealWithHyphens(listOne)
+    ['Right', 'now', 'now', 'oil', 'production', 'is', 'the', 'highest', 'that', "it's", 'been', 'in', '8', 'years.', 'right', 'American']
+    >>> dealWithHyphens(listTwo)
+    ['A', 'simple', 'majority', 'is', 'no', 'longer', 'enough', 'to', 'get', 'anything', 'routine', 'business', 'through', 'the', 'Senate.', 'even', 'passed']
+    >>> dealWithHyphens(listThree)
+    ['these', 'dead', 'shall', 'not', 'have', 'died', 'in', 'vain', 'that', 'this', 'nation']
+    >>> 
     '''
-      
-    for i in range(len(aList)): #go through the list by index
-        if aList[i] == '-':
-			aList.remove('-')
+
+    aList = [x for x in aList if x != '-']
+    for i in range(len(aList)): #go through the list by index (minus one so the index doesn't go out of range)
         if '--' in aList[i]: #if there's a double hyphen
             hyphenIndex = aList[i].find('--') #set hyphenIndex equal to the index of the first part of the double hyphen
             newWord = aList[i][hyphenIndex + 2:] #make the part of the word after the double hyphen a totally new word 
@@ -36,7 +48,6 @@ def textPrep(aString):
     case. textPrep then returns the list.
     Input: aString - any string
     Output: textList - a list of words
-
     >>> stringOne = "John walked to the store."
     >>> stringTwo = "John! walked?:; to... !?!the store!,."
     >>> stringThree = "JOHN! WALked?:; To... !?!ThE STORE!,."
@@ -63,7 +74,6 @@ def wordCount(aList):
     the elements of aList and the values are the frequencies of those elements.
     Input: aList - any list
     Output: frequencyDict - a dictionary showing the frequency of the elements in aList
-
     >>> listOne = ['john', 'walked', 'to', 'the', 'store']
     >>> wordCount(listOne)
     {'john': 1, 'walked': 1, 'store': 1}
@@ -99,7 +109,7 @@ def wordCountAnalysis(frequencyDict):
    """
    
    print('Unique words count:', len(frequencyDict)) #unique words is equal to the length of the dictionary
-   print('Top 10 frequently used words and their count:')
+   print('Top 20 frequently used words and their count:')
    indexNumber = -1 #we want to print words by their index, starting at the very back
    wordsPrinted = 0 #keeps track of how many words have been printed so far
    words = list(frequencyDict.keys()) #to make code less messy, we make a list of keys called'words'
@@ -111,12 +121,19 @@ def wordCountAnalysis(frequencyDict):
             indexNumber -= 1 #go back an index to view the next word
 
 def main():
-    f = open('lincoln.txt','rt', encoding = 'UTF-8') #open the file
-    lincolnString = f.read() #convert the file into a string
+    f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
+    bushString = f.read() #convert the file into a string
     f.close() #close the file
-    print("Running analysis for 'lincoln.txt'")
+    print("Running analysis for 'bush_all.txt'")
     print()
-    wordCountAnalysis(wordCount(textPrep(lincolnString)))
+    wordCountAnalysis(wordCount(textPrep(bushString)))
+
+	f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
+    obamaString = f.read() #convert the file into a string
+    f.close() #close the file
+    print("Running analysis for 'obama_all.txt'")
+    print()
+    wordCountAnalysis(wordCount(textPrep(obamaString)))
 
 main()
 
@@ -124,54 +141,4 @@ import doctest
 doctest.testmod()
 
 import collections
-
-
-###################### This is my version of the code - take the lines that are relevant
-
-def textPrep(filename):
-   f = open(filename,'rt', encoding = 'UTF-8')
-   textString = f.read()
-   textList = textString.split()
-   
-   for i in range(len(textList)):
-      textList[i] = textList[i].strip('-,.:;!?()[]"')
-      textList[i] = textList[i].lower()
-   return textList
-
-def wordCount(textList):       
-   
-   wordCounter = {}
-   stopF = open('stopwords.txt')
-   stopText = stopF.read()
-   stopList = stopText.split()
-
-   
-    
-   for w in textList:
-      if w in stopList:
-         continue
-      if w not in wordCounter:
-         wordCounter[w] = 1
-      else:
-         wordCounter[w] += 1
-   sortedDict = collections.OrderedDict(sorted(wordCounter.items(), key=lambda t: t[1], reverse = True))
-   print('Unique words count:', len(sortedDict))
-   keysList = list(sortedDict.keys())
-   valuesList = list(sortedDict.values())
-   n = len(sortedDict)
-   print('Top 20 Values')
-   for i in range(0,20):
-      print(str(i+1) + ". " + keysList[i],':',valuesList[i])
-
-
-def dealWithHyphens(aList):
-   ''' Removes double hyphens '''
-   n = len(aList)
-   for i in range(n):
-      if '--' in aList[i]:
-         h_index = aList[i].find('--')
-         newWord = aList[i][h_index + 2:]
-         aList += [newWord]
-         aList[i] = aList[i][0:h_index]
-   return aList
 
