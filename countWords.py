@@ -29,7 +29,7 @@ def dealWithHyphens(aList):
     >>> 
     '''
 
-    aList = [x for x in aList if x != '-']
+    aList = [x for x in aList if x != '-'] #use a list comprehension to get rid of lonely hyphens
     for i in range(len(aList)): #go through the list by index (minus one so the index doesn't go out of range)
         if '--' in aList[i]: #if there's a double hyphen
             hyphenIndex = aList[i].find('--') #set hyphenIndex equal to the index of the first part of the double hyphen
