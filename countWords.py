@@ -127,13 +127,15 @@ def main():
     print("Running analysis for 'bush_all.txt'")
     print()
     wordCountAnalysis(wordCount(textPrep(bushString)))
+    print()
 
-	f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
+    f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
     obamaString = f.read() #convert the file into a string
     f.close() #close the file
     print("Running analysis for 'obama_all.txt'")
     print()
     wordCountAnalysis(wordCount(textPrep(obamaString)))
+    print()
 
 main()
 
