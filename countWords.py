@@ -4,7 +4,22 @@
    Fall 2017
    Student names(s): Logan Stiles and Alex Rabinovich
 """
+
 import collections       # ordered dictionary for printing
+
+def hyphenRemover(aList):
+    ''' 
+    Remove double hyphens
+    '''
+    
+    for i in range(len(aList)):
+        if '--' in aList[i]:
+            hyphenIndex = aList[i].find('--') #find is a string method
+            n
+
+Complete program
+return aList
+
 
 def textPrep(aString):
     """
