@@ -5,7 +5,9 @@
    Student names(s): Logan Stiles and Alex Rabinovich
 """
 
-import collections       # ordered dictionary for printing
+import collections       #ordered dictionary for printing
+import numpy as np       #import matplotlib modules
+import matplotlib.pyplot as plt
 
 def dealWithHyphens(aList):
     '''
@@ -119,14 +121,36 @@ def wordCountAnalysis(frequencyDict):
             wordsPrinted += 1 #we're about to print the next word so we increment wordsPrinted
             print(str(wordsPrinted) + '.', words[indexNumber], frequencies[indexNumber]) #print the placement of the word (e.g. 1., 2.), followed by the word, followed by the frequency
             indexNumber -= 1 #go back an index to view the next word
-
+            
+def wordPlot():
+    n_groups = 4
+	means_frank = (90, 55, 40, 65)
+	means_guido = (85, 62, 54, 20)
+ 
+	fig, ax = plt.subplots()
+	index = np.arange(n_groups)
+	bar_width = 0.35
+	
+	rects1 = plt.bar(index, means_frank, bar_width,color='r-',label='Bush')-
+	rects2 = plt.bar(index + bar_width, means_guido, bar_width, color='b-',label='Obama')
+ 
+	plt.xlabel('Word'
+	plt.ylabel('Word Use')
+	plt.title('Most Frequently Used in Words in State of the Union Addresses')
+	plt.xticks(index + bar_width, ('A', 'B', 'C', 'D'))
+    plt.legend(loc = 'upper right', shadow = True) #create the legend
+			   
+	plt.tight_layout()
+	plt.show()            
+            
 def main():
     f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
     bushString = f.read() #convert the file into a string
     f.close() #close the file
     print("Running analysis for 'bush_all.txt'")
     print() #print a blank line
-    wordCountAnalysis(wordCount(textPrep(bushString))) #do a full word analysis on all of the Bush speeches
+    bushDict = wordCount(textPrep(bushString))
+    wordCountAnalysis(bushDict) #do a full word analysis on all of the Bush speeches
     print() #print a blank line
 
     f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
@@ -134,7 +158,8 @@ def main():
     f.close() #close the file
     print("Running analysis for 'obama_all.txt'")
     print() #print a blank line
-    wordCountAnalysis(wordCount(textPrep(obamaString))) #do a full word analysis on all of the Obama speeches
+    obamaDict = wordCount(textPrep(obamaString))
+    wordCountAnalysis(obamaDict) #do a full word analysis on all of the Obama speeches
     print() #print a blank line
 
 main()
