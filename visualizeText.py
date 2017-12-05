@@ -101,4 +101,31 @@ def wordCount(aList):
     frequencyDict = dict(sortedDict) #convert the ordered dictionary back into a regular dictionary
     return frequencyDict
 
+def politicalCount(frequencyDict, filename):
+   """
+   """
+   
+   politicalF = open('filename')
+   politicalString = politicalF.read()
+   politicalList = politicalString.split()
+   politicalCount = 0
+   frequencyKeys = list(frequencyDict.keys())
+   frequencyValues = list(frequencyDict.keys())
+   
+   for i in range(len(frequencyDict)):
+      if frequencyKeys[i] in politicalList:
+         politicalCount += frequencyValues[i]
+   return politicalCount
+
+def fullPoliticalAnalysis(frequencyDict):
+   """
+   """
+   
+   security = politicalCount(frequencyDict, 'nationalsecurity.txt')
+   education = politicalCount(frequencyDict, 'education.txt')
+   economy = politicalCount(frequencyDict, 'economy.txt')
+   healthcare = politicalCount(frequencyDict, 'healthcare.txt')
+   environment = politicalCount(frequencyDict, 'environment.txt')
+   return [security, education, economy, healthcare, environment]
+
 main()
