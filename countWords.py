@@ -123,25 +123,40 @@ def wordCountAnalysis(frequencyDict):
             indexNumber -= 1 #go back an index to view the next word
 
 def wordPlot(frequencyDict, clr, lbl):
-    wordsDisplayed = 20
-    dictKeys = list(frequencyDict.keys())
-    dictValues = list(frequencyDict.values())
+    """
+    wordPlot takes in a wordCount dictionary frequencyDict, a color clr, and a label lbl
+    and plots the top twenty most used words in frequencyDict.
+    Inputs: frequencyDict = a dictionary produced by the wordCount function
+            clr - a string representing a color
+            lbl - a string that will be put in the legend to name the bars
+    Outputs: None
+    """
+    wordsDisplayed = 20 #needed to create the indexes
+    dictKeys = list(frequencyDict.keys()) #needed to plot xticks
+    dictValues = list(frequencyDict.values()) #needed to plot bars
 
     fig, ax = plt.subplots()
-    index = np.arange(wordsDisplayed)
-    bar_width = 0.35
-    
-    bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl)
-    plt.xlabel('Word')
-    plt.ylabel('Word Use')
-    plt.title('Most Frequently Used in Words in State of the Union Addresses')
-    plt.xticks(index + bar_width, dictKeys[-20:], rotation = 'vertical')
+    index = np.arange(wordsDisplayed) #need 20 indexes
+    bar_width = 0.35 #want the bars to be thin
+     
+    bars = plt.bar(index, dictValues[-20:], bar_width,color=clr,label=lbl) #plot the bars indicating the integer of word frequency
+    plt.xlabel('Word') #create the label of the x-axis
+    plt.ylabel('Word Use') #create the label of the y-axis
+    plt.title('Most Frequently Used in Words in State of the Union Addresses') #create the title
+    plt.xticks(index + bar_width, dictKeys[-20:], rotation = 'vertical') #plot the ticks along the x-axis
     plt.legend(loc = 'upper right', shadow = True) #create the legend
                    
     plt.tight_layout()
-    plt.show()            
+    plt.show() #show the graph           
             
 def main():
+    """
+    main() does a full word count analysis on the State of the Union speeches
+    of both George W. Bush and Barack Obama, as well as visualizes the analysis.
+    Inputs: None
+    Outputs: None
+    """
+    
     f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
     bushString = f.read() #convert the file into a string
     f.close() #close the file
@@ -149,6 +164,9 @@ def main():
     print() #print a blank line
     bushDict = wordCount(textPrep(bushString))
     wordCountAnalysis(bushDict) #do a full word analysis on all of the Bush speeches
+    print('Analysis complete. Close the graph to continue.')
+    wordPlot(bushDict, 'red', 'Bush') #plot the top 20 words
+
     print() #print a blank line
 
     f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
@@ -158,9 +176,8 @@ def main():
     print() #print a blank line
     obamaDict = wordCount(textPrep(obamaString))
     wordCountAnalysis(obamaDict) #do a full word analysis on all of the Obama speeches
-    wordPlot(obamaDict, 'blue', 'Obama')
-    wordPlot(bushDict, 'red', 'Bush')
-
+    wordPlot(obamaDict, 'blue', 'Obama') #plot the top 20 words
+      
     print() #print a blank line
 
 main()
