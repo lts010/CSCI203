@@ -103,18 +103,24 @@ def wordCount(aList):
 
 def politicalCount(frequencyDict, filename):
    """
+   politicalCount takes in a dictionary from wordCount frequencyDict and a txt file
+   filename. politicalCount returns how many times the words in filename appear in
+   frequencyDict
+   Inputs: frequencyDict - a dictionary that was put through wordCount
+           filename - a .txt file
+   Outputs: politicalCount - an integer showing how many times the words in filename appear in frequencyDict 
    """
    
-   politicalF = open('filename')
-   politicalString = politicalF.read()
-   politicalList = politicalString.split()
-   politicalCount = 0
-   frequencyKeys = list(frequencyDict.keys())
-   frequencyValues = list(frequencyDict.keys())
+   politicalF = open('filename') #open the file
+   politicalString = politicalF.read() #convert the file into a string
+   politicalList = politicalString.split() #convert the string into a list politicalList
+   politicalCount = 0 #create politcalCount and start at zero
+   frequencyKeys = list(frequencyDict.keys()) #make a list of frequencyDict's keys
+   frequencyValues = list(frequencyDict.keys()) #make a list of frequencyDict's values
    
-   for i in range(len(frequencyDict)):
-      if frequencyKeys[i] in politicalList:
-         politicalCount += frequencyValues[i]
+   for i in range(len(frequencyDict)): #do an index-based loop
+      if frequencyKeys[i] in politicalList: #if one of the keys is in politcalList
+         politicalCount += frequencyValues[i] #add the value of the key to the politicalCount
    return politicalCount
 
 def fullPoliticalAnalysis(frequencyDict):
