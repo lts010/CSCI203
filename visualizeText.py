@@ -174,7 +174,11 @@ def plotPoliticalDiff(bushAnalysis, obamaAnalysis):
  
 def main():
     """
-    main() puts bush_all.txt
+    main() puts bush_all.txt and obama_all.txt through all of the functions and then
+    graphs the results
+    Inputs: None
+    Outputs: None
+    """
     
     f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
     bushString = f.read() #convert the file into a string
