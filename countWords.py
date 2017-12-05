@@ -16,6 +16,7 @@ def dealWithHyphens(aList):
     dealWithHyphens then returns aList
     Input: aList - any list
     Output: aList - the same list but without hyphens we don't want
+    
     >>> stringOne = "Right now--right now--American oil production is the highest that it's been in 8 years."
     >>> stringTwo = "A simple majority is no longer enough to get anything--even routine business--passed through the Senate."
     >>> stringThree = "these dead shall not have died in vain - that this nation"
@@ -50,6 +51,7 @@ def textPrep(aString):
     case. textPrep then returns the list.
     Input: aString - any string
     Output: textList - a list of words
+    
     >>> stringOne = "John walked to the store."
     >>> stringTwo = "John! walked?:; to... !?!the store!,."
     >>> stringThree = "JOHN! WALked?:; To... !?!ThE STORE!,."
@@ -76,6 +78,7 @@ def wordCount(aList):
     the elements of aList and the values are the frequencies of those elements.
     Input: aList - any list
     Output: frequencyDict - a dictionary showing the frequency of the elements in aList
+    
     >>> listOne = ['john', 'walked', 'to', 'the', 'store']
     >>> wordCount(listOne)
     {'john': 1, 'walked': 1, 'store': 1}
@@ -184,6 +187,3 @@ main()
 
 import doctest
 doctest.testmod()
-
-import collections
-
