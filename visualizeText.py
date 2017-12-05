@@ -125,13 +125,67 @@ def politicalCount(frequencyDict, filename):
 
 def fullPoliticalAnalysis(frequencyDict):
    """
+   fullPoliticalAnalysis takes in a wordCount dictionary frequencyDict and returns
+   a list of the frequencyDict's 5 politcal counts. National security, education, 
+   economy, healthcare, and environment, respectively.
+   Inputs: frequencyDict - a dictinary from the functon wordCount
+   Outputs: aList - a list of frequencyDict's 5 politicalCounts
    """
    
-   security = politicalCount(frequencyDict, 'nationalsecurity.txt')
-   education = politicalCount(frequencyDict, 'education.txt')
-   economy = politicalCount(frequencyDict, 'economy.txt')
-   healthcare = politicalCount(frequencyDict, 'healthcare.txt')
-   environment = politicalCount(frequencyDict, 'environment.txt')
-   return [security, education, economy, healthcare, environment]
+   security = politicalCount(frequencyDict, 'nationalsecurity.txt') #find the national security politcalCount
+   education = politicalCount(frequencyDict, 'education.txt') #find the education politcalCount
+   economy = politicalCount(frequencyDict, 'economy.txt') #find the economy politcalCount
+   healthcare = politicalCount(frequencyDict, 'healthcare.txt') #find the healthcare politicalCount
+   environment = politicalCount(frequencyDict, 'environment.txt') #find the environment politcalCount
+   aList = [security, education, economy, healthcare, environment] #make a list of the 5 politicalCounts
+   return aList
+
+def plotPoliticalDiff(bushAnalysis, obamaAnalysis):
+    """
+    plotPoliticalDiff takes in two lists bushAnalysis and obamaAnalysis and plots them on a bar
+    graph.
+    Inputs: bushAnalysis - the fullPoliticalAnalysis of President Bush's SoU speeches
+            ObamaAnalysis - the fullPoliticalAnalysis of President Obama's SoU speeches
+    Outputs: None
+    """
+    
+    # data to plot
+    n_groups = 4
+    means_frank = (90, 55, 40, 65)
+    means_guido = (85, 62, 54, 20)
+ 
+    # create plot
+    fig, ax = plt.subplots()
+    index = np.arange(n_groups)
+    bar_width = 0.35
+    opacity = 0.8 
+    
+    rects1 = plt.bar(index, means_frank, bar_width,alpha=opacity,color='b',label='Frank')
+    rects2 = plt.bar(index + bar_width, means_guido, bar_width,alpha=opacity,color='g',label='Guido')
+    
+    plt.xlabel('Person')
+    plt.ylabel('Scores')
+    plt.title('Scores by person')
+    plt.xticks(index + bar_width, ('A', 'B', 'C', 'D'))
+    plt.legend()
+ 
+    plt.tight_layout()
+    plt.show()
+ 
+def main():
+    """
+    main() puts bush_all.txt
+    
+    f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
+    bushString = f.read() #convert the file into a string
+    f.close() #close the file
+    bushAnalysis = fullPoliticalAnalysis(wordCount(textPrep(bushString))) #do a full political analysis on President Bush
+    f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
+    obamaString = f.read() #convert the file into a string
+    f.close() #close the file
+    obamaDict = fullPoliticalAnalysis(wordCount(textPrep(obamaString))) #do a full political analysis on President Obama
+    plotPoliticalDiff(bushAnalysis, obamaAnalysis) #plot the graph
+      
+print() #print a blank line
 
 main()
