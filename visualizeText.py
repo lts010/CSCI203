@@ -145,30 +145,26 @@ def plotPoliticalDiff(bushAnalysis, obamaAnalysis):
     plotPoliticalDiff takes in two lists bushAnalysis and obamaAnalysis and plots them on a bar
     graph.
     Inputs: bushAnalysis - the fullPoliticalAnalysis of President Bush's SoU speeches
-            ObamaAnalysis - the fullPoliticalAnalysis of President Obama's SoU speeches
+            obamaAnalysis - the fullPoliticalAnalysis of President Obama's SoU speeches
     Outputs: None
     """
     
     # data to plot
-    n_groups = 4
-    means_frank = (90, 55, 40, 65)
-    means_guido = (85, 62, 54, 20)
+    politicalCategories = 5
  
-    # create plot
     fig, ax = plt.subplots()
-    index = np.arange(n_groups)
-    bar_width = 0.35
-    opacity = 0.8 
+    index = np.arange(politicalCategories)
+    bar_width = 0.45
     
-    rects1 = plt.bar(index, means_frank, bar_width,alpha=opacity,color='b',label='Frank')
-    rects2 = plt.bar(index + bar_width, means_guido, bar_width,alpha=opacity,color='g',label='Guido')
+    rects1 = plt.bar(index, bushAnalysis, bar_width, color='red', label='Bush') #plot the bars relevant to Bush
+    rects2 = plt.bar(index + bar_width, obamaAnalysis, bar_width, color='blue', label='Obama') #plot the bars relevant to Obama
     
-    plt.xlabel('Person')
-    plt.ylabel('Scores')
-    plt.title('Scores by person')
-    plt.xticks(index + bar_width, ('A', 'B', 'C', 'D'))
-    plt.legend()
- 
+    plt.xlabel('Political Issues')
+    plt.ylabel('Number of Times Talked About the Issue')
+    plt.title('Political Issues by President (SOU Speeches)')
+    plt.xticks(index + bar_width, ('National Security', 'Education', 'Economy', 'Healthcare', 'Environment'))
+    plt.legend(loc = 'upper right', shadow = True) #create the legend
+      
     plt.tight_layout()
     plt.show()
  
