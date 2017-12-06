@@ -167,6 +167,7 @@ def main():
     print() #print a blank line
     bushDict = wordCount(textPrep(bushString))
     wordCountAnalysis(bushDict) #do a full word analysis on all of the Bush speeches
+    print()
     print('Analysis complete. Close the graph to continue.')
     wordPlot(bushDict, 'red', 'Bush') #plot the top 20 words
 
