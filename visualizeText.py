@@ -113,13 +113,13 @@ def politicalCount(frequencyDict, filename):
            filename - a .txt file
    Outputs: politicalCount - an integer showing how many times the words in filename appear in frequencyDict 
    """
-   
-   politicalF = open('filename') #open the file
+
+   politicalF = open(filename) #open the file
    politicalString = politicalF.read() #convert the file into a string
    politicalList = politicalString.split() #convert the string into a list politicalList
    politicalCount = 0 #create politcalCount and start at zero
    frequencyKeys = list(frequencyDict.keys()) #make a list of frequencyDict's keys
-   frequencyValues = list(frequencyDict.keys()) #make a list of frequencyDict's values
+   frequencyValues = list(frequencyDict.values()) #make a list of frequencyDict's values
    
    for i in range(len(frequencyDict)): #do an index-based loop
       if frequencyKeys[i] in politicalList: #if one of the keys is in politcalList
@@ -165,7 +165,7 @@ def plotPoliticalDiff(bushAnalysis, obamaAnalysis):
     plt.xlabel('Political Issues') #label the x-axis
     plt.ylabel('Number of Times Talked About the Issue') #label the y-axis
     plt.title('Political Issues by President (SOU Speeches)') #create the title
-    plt.xticks(index + bar_width, ('National Security', 'Education', 'Economy', 'Healthcare', 'Environment')) #plot the ticks along the x-axis
+    plt.xticks(index + (bar_width)/2, ('National Security', 'Education', 'Economy', 'Healthcare', 'Environment')) #plot the ticks along the x-axis
     plt.legend(loc = 'upper right', shadow = True) #create the legend
       
     plt.tight_layout()
@@ -179,16 +179,17 @@ def main():
     Outputs: None
     """
     
-    f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
+    f = open('bush_all.txt','rt') #open the file
     bushString = f.read() #convert the file into a string
     f.close() #close the file
     bushAnalysis = fullPoliticalAnalysis(wordCount(textPrep(bushString))) #do a full political analysis on President Bush
-    f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
+    f = open('obama_all.txt','rt') #open the file
     obamaString = f.read() #convert the file into a string
     f.close() #close the file
-    obamaDict = fullPoliticalAnalysis(wordCount(textPrep(obamaString))) #do a full political analysis on President Obama
+    obamaAnalysis = fullPoliticalAnalysis(wordCount(textPrep(obamaString))) #do a full political analysis on President Obama
     plotPoliticalDiff(bushAnalysis, obamaAnalysis) #plot the graph
-      
-print() #print a blank line
 
 main()
+
+import doctest
+doctest.testmod()
