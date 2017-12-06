@@ -146,8 +146,8 @@ def wordPlot(frequencyDict, clr, lbl):
     plt.xlabel('Word') #create the label of the x-axis
     plt.ylabel('Word Use') #create the label of the y-axis
     plt.title('Most Frequently Used in Words in State of the Union Addresses') #create the title
-    plt.xticks(index + bar_width, dictKeys[-20:], rotation = 'vertical') #plot the ticks along the x-axis
-    plt.legend(loc = 'upper right', shadow = True) #create the legend
+    plt.xticks(index, dictKeys[-20:], rotation = 'vertical') #plot the ticks along the x-axis
+    plt.legend(loc = 'upper left', shadow = True) #create the legend
                    
     plt.tight_layout()
     plt.show() #show the graph           
