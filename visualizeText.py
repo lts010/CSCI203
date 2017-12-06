@@ -16,6 +16,7 @@ def dealWithHyphens(aList):
     dealWithHyphens then returns aList
     Input: aList - any list
     Output: aList - the same list but without hyphens we don't want
+    
     >>> stringOne = "Right now--right now--American oil production is the highest that it's been in 8 years."
     >>> stringTwo = "A simple majority is no longer enough to get anything--even routine business--passed through the Senate."
     >>> stringThree = "these dead shall not have died in vain - that this nation"
@@ -50,6 +51,7 @@ def textPrep(aString):
     case. textPrep then returns the list.
     Input: aString - any string
     Output: textList - a list of words
+    
     >>> stringOne = "John walked to the store."
     >>> stringTwo = "John! walked?:; to... !?!the store!,."
     >>> stringThree = "JOHN! WALked?:; To... !?!ThE STORE!,."
@@ -76,6 +78,7 @@ def wordCount(aList):
     the elements of aList and the values are the frequencies of those elements.
     Input: aList - any list
     Output: frequencyDict - a dictionary showing the frequency of the elements in aList
+    
     >>> listOne = ['john', 'walked', 'to', 'the', 'store']
     >>> wordCount(listOne)
     {'john': 1, 'walked': 1, 'store': 1}
@@ -150,23 +153,23 @@ def plotPoliticalDiff(bushAnalysis, obamaAnalysis):
     """
     
     # data to plot
-    politicalCategories = 5
+    politicalCategories = 5 #needed to create the indexes
  
     fig, ax = plt.subplots()
-    index = np.arange(politicalCategories)
-    bar_width = 0.45
+    index = np.arange(politicalCategories) #create the indexes
+    bar_width = 0.45 
     
     rects1 = plt.bar(index, bushAnalysis, bar_width, color='red', label='Bush') #plot the bars relevant to Bush
     rects2 = plt.bar(index + bar_width, obamaAnalysis, bar_width, color='blue', label='Obama') #plot the bars relevant to Obama
     
-    plt.xlabel('Political Issues')
-    plt.ylabel('Number of Times Talked About the Issue')
-    plt.title('Political Issues by President (SOU Speeches)')
-    plt.xticks(index + bar_width, ('National Security', 'Education', 'Economy', 'Healthcare', 'Environment'))
+    plt.xlabel('Political Issues') #label the x-axis
+    plt.ylabel('Number of Times Talked About the Issue') #label the y-axis
+    plt.title('Political Issues by President (SOU Speeches)') #create the title
+    plt.xticks(index + bar_width, ('National Security', 'Education', 'Economy', 'Healthcare', 'Environment')) #plot the ticks along the x-axis
     plt.legend(loc = 'upper right', shadow = True) #create the legend
       
     plt.tight_layout()
-    plt.show()
+    plt.show() #create the graph
  
 def main():
     """
