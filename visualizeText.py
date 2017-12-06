@@ -179,16 +179,16 @@ def main():
     Outputs: None
     """
     
-    f = open('bush_all.txt','rt') #open the file
+    f = open('bush_all.txt','rt', encoding = 'UTF-8') #open the file
     bushString = f.read() #convert the file into a string
     f.close() #close the file
     bushAnalysis = fullPoliticalAnalysis(wordCount(textPrep(bushString))) #do a full political analysis on President Bush
-    f = open('obama_all.txt','rt') #open the file
+    f = open('obama_all.txt','rt', encoding = 'UTF-8') #open the file
     obamaString = f.read() #convert the file into a string
     f.close() #close the file
     obamaAnalysis = fullPoliticalAnalysis(wordCount(textPrep(obamaString))) #do a full political analysis on President Obama
     plotPoliticalDiff(bushAnalysis, obamaAnalysis) #plot the graph
-
+      
 main()
 
 import doctest
